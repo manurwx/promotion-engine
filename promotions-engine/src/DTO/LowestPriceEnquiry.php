@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\DTO;
 
-use PromotionEnquiryInterface;
-
 class LowestPriceEnquiry implements PromotionEnquiryInterface
 {
     private ?int $productId;
@@ -17,14 +15,13 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
 
     private ?string $requestDate;
 
-    private ?int $discountedPrice;
-
-    private ?int $price;
-
     private ?int $promotionId;
 
     private ?string $promotionName;
 
+    private ?int $price;
+
+    private ?int $discountedPrice;
 
     public function jsonSerialize(): array
     {
@@ -32,177 +29,7 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
     }
 
     /**
-     * Get the value of promotionName
-     *
-     * @return null/string
-     */
-    public function getPromotionName(): ?string
-    {
-        return $this->promotionName;
-    }
-
-    /**
-     * Set the value of promotionName
-     *
-     * @param null/string $promotionName
-     *
-     * @return self
-     */
-    public function setPromotionName(?string $promotionName): self
-    {
-        $this->promotionName = $promotionName;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of promotionId
-     *
-     * @return ?int
-     */
-    public function getPromotionId(): ?int
-    {
-        return $this->promotionId;
-    }
-
-    /**
-     * Set the value of promotionId
-     *
-     * @param ?int $promotionId
-     *
-     * @return self
-     */
-    public function setPromotionId(?int $promotionId): self
-    {
-        $this->promotionId = $promotionId;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of discountedPrice
-     *
-     * @return ?int
-     */
-    public function getDiscountedPrice(): ?int
-    {
-        return $this->discountedPrice;
-    }
-
-    /**
-     * Set the value of discountedPrice
-     *
-     * @param ?int $discountedPrice
-     *
-     * @return self
-     */
-    public function setDiscountedPrice(?int $discountedPrice): self
-    {
-        $this->discountedPrice = $discountedPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of requestDate
-     *
-     * @return ?string
-     */
-    public function getRequestDate(): ?string
-    {
-        return $this->requestDate;
-    }
-
-    /**
-     * Set the value of requestDate
-     *
-     * @param ?string $requestDate
-     *
-     * @return self
-     */
-    public function setRequestDate(?string $requestDate): self
-    {
-        $this->requestDate = $requestDate;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of voucherCode
-     *
-     * @return ?string
-     */
-    public function getVoucherCode(): ?string
-    {
-        return $this->voucherCode;
-    }
-
-    /**
-     * Set the value of voucherCode
-     *
-     * @param ?string $voucherCode
-     *
-     * @return self
-     */
-    public function setVoucherCode(?string $voucherCode): self
-    {
-        $this->voucherCode = $voucherCode;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of requestLocation
-     *
-     * @return ?string
-     */
-    public function getRequestLocation(): ?string
-    {
-        return $this->requestLocation;
-    }
-
-    /**
-     * Set the value of requestLocation
-     *
-     * @param ?string $requestLocation
-     *
-     * @return self
-     */
-    public function setRequestLocation(?string $requestLocation): self
-    {
-        $this->requestLocation = $requestLocation;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of quantity
-     *
-     * @return ?int
-     */
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * Set the value of quantity
-     *
-     * @param ?int $quantity
-     *
-     * @return self
-     */
-    public function setQuantity(?int $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of productId
-     *
-     * @return ?int
+     * @return int|null
      */
     public function getProductId(): ?int
     {
@@ -210,23 +37,111 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
     }
 
     /**
-     * Set the value of productId
-     *
-     * @param ?int $productId
-     *
-     * @return self
+     * @param int|null $productId
      */
-    public function setProductId(?int $productId): self
+    public function setProductId(?int $productId): void
     {
         $this->productId = $productId;
-
-        return $this;
     }
 
     /**
-     * Get the value of price
-     *
-     * @return ?int
+     * @return int|null
+     */
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param int|null $quantity
+     */
+    public function setQuantity(?int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRequestLocation(): ?string
+    {
+        return $this->requestLocation;
+    }
+
+    /**
+     * @param string|null $requestLocation
+     */
+    public function setRequestLocation(?string $requestLocation): void
+    {
+        $this->requestLocation = $requestLocation;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVoucherCode(): ?string
+    {
+        return $this->voucherCode;
+    }
+
+    /**
+     * @param string|null $voucherCode
+     */
+    public function setVoucherCode(?string $voucherCode): void
+    {
+        $this->voucherCode = $voucherCode;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRequestDate(): ?string
+    {
+        return $this->requestDate;
+    }
+
+    /**
+     * @param string|null $requestDate
+     */
+    public function setRequestDate(?string $requestDate): void
+    {
+        $this->requestDate = $requestDate;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPromotionId(): ?int
+    {
+        return $this->promotionId;
+    }
+
+    /**
+     * @param int|null $promotionId
+     */
+    public function setPromotionId(?int $promotionId): void
+    {
+        $this->promotionId = $promotionId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPromotionName(): ?string
+    {
+        return $this->promotionName;
+    }
+
+    /**
+     * @param string|null $promotionName
+     */
+    public function setPromotionName(?string $promotionName): void
+    {
+        $this->promotionName = $promotionName;
+    }
+
+    /**
+     * @return int|null
      */
     public function getPrice(): ?int
     {
@@ -234,16 +149,26 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
     }
 
     /**
-     * Set the value of price
-     *
-     * @param ?int $price
-     *
-     * @return self
+     * @param int|null $price
      */
-    public function setPrice(?int $price): self
+    public function setPrice(?int $price): void
     {
         $this->price = $price;
+    }
 
-        return $this;
+    /**
+     * @return int|null
+     */
+    public function getDiscountedPrice(): ?int
+    {
+        return $this->discountedPrice;
+    }
+
+    /**
+     * @param int|null $discountedPrice
+     */
+    public function setDiscountedPrice(?int $discountedPrice): void
+    {
+        $this->discountedPrice = $discountedPrice;
     }
 }
