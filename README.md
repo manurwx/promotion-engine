@@ -5,7 +5,7 @@ The promotion engine has a bunch of affiliate marketing partners that are able t
 The client application or service can fire a request to the Promotions Engine with various pieces of data.
 The engine will then find the best value offerings based on the data it received.
 
-![](dia.png)
+![](doc/images/dia.png)
 
 ## Database design
 
@@ -20,7 +20,7 @@ PROMOTION
 - adjustment (float)
 - criteria (string|json)
 
-![](dia2.png)
+![](doc/images/dia2.png)
 
 ### Example data
 
@@ -40,3 +40,14 @@ adjustment: 0.5
 criteria: {"from": "2021-11-25", "to": "2021-11-28"}
 ```
 
+### How to start the application
+
+```shell
+symfony server:start
+docker-compose up -d
+```
+
+Run the migrations
+```shell
+symfony console doctrine:migrations:migrate
+```
