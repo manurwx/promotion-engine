@@ -6,3 +6,37 @@ The client application or service can fire a request to the Promotions Engine wi
 The engine will then find the best value offerings based on the data it received.
 
 ![](dia.png)
+
+## Database design
+
+PRODUCT
+- id (int)
+- price (int)
+
+PROMOTION
+- id (int)
+- name (string)
+- type (string)
+- adjustment (float)
+- criteria (string|json)
+
+![](dia2.png)
+
+### Example data
+
+```text
+id: 2
+name: Voucher OU812
+type: fixed_price_voucher
+adjustment: 100
+criteria: {"code": "OU812"}
+```
+
+```text
+id: 1
+name: Black Friday half price sale
+type: date_range_multiplier
+adjustment: 0.5
+criteria: {"from": "2021-11-25", "to": "2021-11-28"}
+```
+
