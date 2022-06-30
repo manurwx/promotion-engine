@@ -1,6 +1,6 @@
 <?php
 
-interface PromotionEnquiryInterface
+interface PromotionEnquiryInterface extends \JsonSerializable
 {
     
 }

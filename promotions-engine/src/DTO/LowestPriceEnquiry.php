@@ -19,11 +19,17 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
 
     private ?int $discountedPrice;
 
+    private ?int $price;
+
     private ?int $promotionId;
 
     private ?string $promotionName;
 
-    
+
+    public function jsonSerialize(): array
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * Get the value of promotionName
@@ -213,6 +219,30 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
     public function setProductId(?int $productId): self
     {
         $this->productId = $productId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of price
+     *
+     * @return ?int
+     */
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set the value of price
+     *
+     * @param ?int $price
+     *
+     * @return self
+     */
+    public function setPrice(?int $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
