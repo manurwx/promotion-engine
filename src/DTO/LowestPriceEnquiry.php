@@ -23,9 +23,9 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
 
     private ?string $promotionName;
 
-    private ?int $price;
+    private ?float $price;
 
-    private ?int $discountedPrice;
+    private ?float $discountedPrice;
 
     public function jsonSerialize(): array
     {
@@ -145,33 +145,33 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
     /**
-     * @param int|null $price
+     * @param float|null $price
      */
-    public function setPrice(?int $price): void
+    public function setPrice(?float $price): void
     {
         $this->price = $price;
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getDiscountedPrice(): ?int
+    public function getDiscountedPrice(): ?float
     {
         return $this->discountedPrice;
     }
 
     /**
-     * @param int|null $discountedPrice
+     * @param float|null $discountedPrice
      */
-    public function setDiscountedPrice(?int $discountedPrice): void
+    public function setDiscountedPrice(?float $discountedPrice): void
     {
         $this->discountedPrice = $discountedPrice;
     }
