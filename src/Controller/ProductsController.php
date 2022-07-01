@@ -38,7 +38,6 @@ class ProductsController extends AbstractController
             );
         }
 
-        // 1. Deserialize json data into an EnquiryDTO
         $lowestPriceEnquiry = $serializer->deserialize(
             $request->getContent(),
             LowestPriceEnquiry::class,
@@ -54,12 +53,10 @@ class ProductsController extends AbstractController
             date_create_immutable($lowestPriceEnquiry->getRequestDate())
         );
 
-        // 2. Pass the Enquiry into a promotions filter and the appropriate promotion will be applied
-        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry, $promotions);
+        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry, ...$promotions);
 
-        // 3. Return the modified Enquiry (as JSON)
         $responseContent = $serializer->serialize($modifiedEnquiry, 'json');
 
-        return new Response($responseContent, Response::HTTP_OK);
+        return new Response($responseContent, Response::HTTP_OK, ['Content-Type' => 'application/json']);
     }
 }
