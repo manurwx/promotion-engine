@@ -5,24 +5,30 @@ namespace App\DTO;
 
 use App\Entity\Product;
 use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class LowestPriceEnquiry implements PriceEnquiryInterface
 {
     #[Ignore]
     private ?Product $product;
 
+    #[NotBlank]
+    #[Positive]
     private ?int $quantity;
 
     private ?string $requestLocation;
 
     private ?string $voucherCode;
 
+    #[NotBlank]
     private ?string $requestDate;
 
     private ?int $promotionId;
 
     private ?string $promotionName;
 
+    #[Positive]
     private ?float $price;
 
     private ?float $discountedPrice;
