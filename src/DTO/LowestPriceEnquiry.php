@@ -48,7 +48,6 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
         $this->product = $product;
     }
 
-
     /**
      * @return int|null
      */
