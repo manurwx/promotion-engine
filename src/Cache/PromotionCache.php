@@ -21,7 +21,8 @@ class PromotionCache
 
         return $this->cache->get($key, function (ItemInterface $item) use ($product, $requestDate) {
 
-            var_dump('miss');
+            $item->expiresAfter(3600); // expire after 1h
+            //var_dump('miss');
 
             return $this->repository->findValidForProduct(
                 $product,
