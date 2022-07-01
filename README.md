@@ -51,3 +51,6 @@ Run the migrations
 ```shell
 symfony console doctrine:migrations:migrate
 ```
+
+Insert the data from the SQL files under `SQL` folder.
+
