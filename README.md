@@ -1,5 +1,9 @@
 # Promotions Engine Microservice
 
+The aim of the project is build a demo microservice in Symfony.
+
+## Design
+
 The promotion engine has a bunch of affiliate marketing partners that are able to provide discounts on products.
 
 The client application or service can fire a request to the Promotions Engine with various pieces of data.
@@ -7,50 +11,60 @@ The engine will then find the best value offerings based on the data it received
 
 ![](doc/images/dia.png)
 
-## Database design
-
-PRODUCT
-- id (int)
-- price (int)
-
-PROMOTION
-- id (int)
-- name (string)
-- type (string)
-- adjustment (float)
-- criteria (string|json)
+Database design
 
 ![](doc/images/dia2.png)
 
-### Example data
+See `SQL` folder for database data.
 
-```text
-id: 2
-name: Voucher OU812
-type: fixed_price_voucher
-adjustment: 100
-criteria: {"code": "OU812"}
-```
+### Project setup
 
-```text
-id: 1
-name: Black Friday half price sale
-type: date_range_multiplier
-adjustment: 0.5
-criteria: {"from": "2021-11-25", "to": "2021-11-28"}
-```
+Requires docker installed locally.
 
-### How to start the application
+From the root folder of the project type
 
 ```shell
-symfony server:start
 docker-compose up -d
 ```
 
-Run the migrations
+Docker will take care of auto-installing dependencies,
+creating the database schema, running the migrations and fixtures.
+It usually takes few minutes after the `webserver` container is running to complete these tasks.
+
+### Testing the endpoint
+
+You can run the unit tests with
+
 ```shell
-symfony console doctrine:migrations:migrate
+bin/phpunit tests/unit
 ```
 
-Insert the data from the SQL files under `SQL` folder.
+To test manually you can use postman or similar http client to run a query such as the following
 
+```text
+POST http://localhost:8000/products/1/lowest-price
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 5,
+  "request_location": "UK",
+  "voucher_code": "OU812",
+  "request_date": "2022-11-27"
+}
+```
+
+Expected response
+
+```text
+{
+  "quantity": 5,
+  "request_location": "UK",
+  "voucher_code": "OU812",
+  "request_date": "2022-11-27",
+  "promotion_id": 1,
+  "promotion_name": "Black Friday half price sale",
+  "discounted_price": 250
+}
+```

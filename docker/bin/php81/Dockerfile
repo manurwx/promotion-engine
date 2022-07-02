@@ -73,3 +73,11 @@ RUN a2enmod rewrite headers
 
 # Cleanup
 RUN rm -rf /usr/src/*
+
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+CMD ["apache2-foreground"]
+
+ENTRYPOINT ["/entrypoint.sh"]
