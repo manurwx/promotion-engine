@@ -26,15 +26,13 @@ class DtoSubscriberTest extends ServiceTestCase
         $dto->setQuantity(-5);
 
         $event = new AfterDtoCreatedEvent($dto);
-
-        /** @var EventDispatcherInterface $eventDispatcher */
-        $eventDispatcher = $this->container->get('debug.event_dispatcher');
+        $dispatcher = $this->container->get(EventDispatcherInterface::class);
 
         // Expect
         $this->expectException(ServiceException::class);
-        $this->expectExceptionMessage('Validation failed');
+        $this->expectExceptionMessage('ConstraintViolationList');
 
         // When
-        $eventDispatcher->dispatch($event, $event::NAME);
+        $dispatcher->dispatch($event, $event::NAME);
     }
 }
