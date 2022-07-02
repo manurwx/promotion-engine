@@ -15,8 +15,6 @@ Database design
 
 ![](doc/images/dia2.png)
 
-See `SQL` folder for database data.
-
 ### Project setup
 
 Requires docker installed locally.
@@ -33,7 +31,7 @@ It usually takes few minutes after the `webserver` container is running to compl
 
 ### Testing the endpoint
 
-You can run the unit tests with
+You can run unit tests with
 
 ```shell
 bin/phpunit tests/unit
